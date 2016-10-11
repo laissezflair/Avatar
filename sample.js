@@ -1,4 +1,4 @@
-var http = require("http");
+var request = require("request");
 
 
 
@@ -12,11 +12,11 @@ function readHTML(url, _printout) {
 
     response.setEncoding("utf8");             // Use UTF-8 encoding
     var store = "";
-    response.on("data", function(data) {           // On Data Received
+    response.on("data", function(data) {      // On Data Received
       store += data;
     });
 
-    response.on("end", function() {                // On Data Completed
+    response.on("end", function() {           // On Data Completed
       console.log("Response stream complete.");
       _printout(store);
     });
@@ -27,12 +27,5 @@ function printHTML(htmlData){
   console.log(htmlData);
 }
 
-
-
-
-
-
-var printthis = "bob"
-var andthis = "lucy"
 
 readHTML("www.example.com", printHTML);
