@@ -1,5 +1,4 @@
-var request = require("request");
-
+var http = require("http");
 
 
 function readHTML(url, _printout) {
@@ -12,11 +11,11 @@ function readHTML(url, _printout) {
 
     response.setEncoding("utf8");             // Use UTF-8 encoding
     var store = "";
-    response.on("data", function(data) {      // On Data Received
+    response.on("data", function(data) {           // On Data Received
       store += data;
     });
 
-    response.on("end", function() {           // On Data Completed
+    response.on("end", function() {                // On Data Completed
       console.log("Response stream complete.");
       _printout(store);
     });
